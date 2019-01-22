@@ -1,0 +1,27 @@
+{
+  "name": "node-glitch-keepalive",
+  "version": "0.0.1",
+  "description": "Keep a Glitch project always alive.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "node-cron-link": "^0.0.3",
+    "express": "^4.16.4",
+    "node-sanitize-options": "^0.0.4"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://github.com/animatedcreativity/node-glitch-keepalive"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "keepalive",
+    "alive"
+  ]
+}
