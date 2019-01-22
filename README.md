@@ -1,17 +1,24 @@
-# node-glitch-keepalive
-Keep a Glitch project always alive.
+# node-keepalive
+Keep a node project (example: Glitch) always alive.
+
+-------------------------------------------------------
+
+**Note:**
+
+Works for Glitch by default. But, link can be changed to make it work for other projects too.
 
 -------------------------------------------------------
 
 **Usage:**
 
 ```
-var keepAlive = require("node-glitch-keepalive");
+var keepAlive = require("node-keepalive");
 keepAlive(config, expressApp);
 ```
 
-config:
-- endpoint: "/keepalive" // dummy endpoint to keep calling to keep the Glitch project alive.
+config (Everything is optional):
+- link: "https://" + process.env.PROJECT_DOMAIN + ".glitch.me", // project link
+- endpoint: "/keepalive" // dummy endpoint to keep calling to keep the project alive.
 - time: 2 // call endpoint every 2 minutes
 - consoleLog: true // show log in console
 - kickStart: true // if true will call endpoint right away without waiting for set time.
@@ -25,7 +32,7 @@ expressApp:
 **Example (without providing express app):**
 
 ```
-var keepAlive = require("node-glitch-keepalive");
+var keepAlive = require("node-keepalive");
 keepAlive();
 ```
 
@@ -35,7 +42,7 @@ keepAlive();
 var express = require('express');
 var app = express();
 
-var keepAlive = require("node-glitch-keepalive");
+var keepAlive = require("node-keepalive");
 keepAlive({}, app);
 
 // ....... other endpoints
@@ -46,11 +53,12 @@ var listener = app.listen(process.env.PORT, function() {
 
 ```
 
-**Example (with config):**
+**Example (with config):** Everything is optional.
 
 ```
-var keepAlive = require("node-glitch-keepalive");
+var keepAlive = require("node-keepalive");
 keepAlive({
+  link: "https://" + process.env.PROJECT_DOMAIN + ".glitch.me", // project link
   endpoint: "/keepalive",
   time: 2, // 2 minutes
   consoleLog: true,

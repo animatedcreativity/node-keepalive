@@ -1,6 +1,7 @@
 module.exports = exports = function(config, app) {
   var sanitize = require("node-sanitize-options");
   config = sanitize.options(config, {
+    link: "https://" + process.env.PROJECT_DOMAIN + ".glitch.me",
     endpoint: "/keepalive",
     time: 2, // 2 minutes
     consoleLog: true,
@@ -20,7 +21,7 @@ module.exports = exports = function(config, app) {
       console.log('Your app is listening on port ' + listener.address().port);
     });
   }
-  var link = "https://" + process.env.PROJECT_DOMAIN + ".glitch.me" + config.endpoint;
+  var link = config.link + config.endpoint;
   var cronLink = require("node-cron-link");
   cronLink({url: link, callback: config.callback}, {time: config.time, kickStart: config.kickStart, consoleLog: config.consoleLog});
 };
